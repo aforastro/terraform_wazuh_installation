@@ -128,6 +128,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
     }
 }
 
+
 # Wazuh Server EC2 Instance
 resource "aws_instance" "wazuh_server_13700" {
     ami           = data.aws_ami.amzn2.id  # "ami-0c1bc246476a5572b"
