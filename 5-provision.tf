@@ -24,7 +24,7 @@ resource "null_resource" "configure_indexer"{
 
       connection {
           host        = coalesce(aws_instance.wazuh_indexer_13700.public_ip, aws_instance.wazuh_indexer_13700.private_ip)
-          agent       = true
+          agent       = false
           type        = "ssh"
           user        = "ec2-user"
           private_key = tls_private_key.indexer_key.private_key_pem
@@ -61,7 +61,7 @@ resource "null_resource" "configure_server"{
 
       connection {
           host        = coalesce(aws_instance.wazuh_server_13700.public_ip, aws_instance.wazuh_server_13700.private_ip)
-          agent       = true
+          agent       = false
           type        = "ssh"
           user        = "ec2-user"
           private_key = tls_private_key.server_key.private_key_pem
@@ -94,7 +94,7 @@ resource "null_resource" "configure_dashboard"{
 
       connection {
           host        = coalesce(aws_instance.wazuh_dashboard_13700.public_ip, aws_instance.wazuh_dashboard_13700.private_ip)
-          agent       = true
+          agent       = false
           type        = "ssh"
           user        = "ec2-user"
           private_key = tls_private_key.dashboard_key.private_key_pem

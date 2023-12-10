@@ -10,20 +10,21 @@
 
 
     tasks:
-      - name: Download the Wazuh installation asistant 4.3.4
-        shell: curl -sO https://s3.us-west-1.amazonaws.com/packages.wazuh.com/4.3/wazuh-install.sh
+
+      - name: Download the Wazuh installation asistant 4.7
+        shell: curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh #https://s3.us-west-1.amazonaws.com/packages.wazuh.com/4.3/wazuh-install.sh
 
       - name: Download the Wazuh configuration file
-        shell: curl -sO https://s3.us-west-1.amazonaws.com/packages.wazuh.com/4.3/config.yml
+        shell: curl -sO https://packages.wazuh.com/4.7/config.yml #https://s3.us-west-1.amazonaws.com/packages.wazuh.com/4.3/config.yml
 
       - name: Replace Indexer IP
         shell: sed -i '5s/<indexer-node-ip>/{{ indexer_ip }}/g' /home/ec2-user/config.yml
 
       - name: Replace Server IP
-        shell: sed -i '15s/<wazuh-manager-ip>/{{ server_ip }}/g' /home/ec2-user/config.yml
+        shell: sed -i '16s/<wazuh-manager-ip>/{{ server_ip }}/g' /home/ec2-user/config.yml
 
       - name: Replace Dashboard IP
-        shell: sed -i '24s/<dashboard-node-ip>/{{ dashboard_ip }}/g' /home/ec2-user/config.yml
+        shell: sed -i '28s/<dashboard-node-ip>/{{ dashboard_ip }}/g' /home/ec2-user/config.yml
 
       - name: Generate config files
         shell: cd /home/ec2-user/ && bash wazuh-install.sh --generate-config-files

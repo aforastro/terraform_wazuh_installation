@@ -1,7 +1,7 @@
 # Wazuh Indexer EC2 Instance
 resource "aws_instance" "wazuh_indexer_13700" {
     ami           = data.aws_ami.amzn2.id # "ami-0c1bc246476a5572b"
-    instance_type = "t3.xlarge"
+    instance_type = "t2.micro"
     security_groups = [ "${aws_security_group.security_group_13700.name}"]
     key_name = aws_key_pair.aws_key_indexer.key_name
     associate_public_ip_address = true
@@ -31,7 +31,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -48,7 +48,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -63,7 +63,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -77,7 +77,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -91,7 +91,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -105,7 +105,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -120,7 +120,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.indexer_key.private_key_pem
@@ -132,7 +132,7 @@ resource "aws_instance" "wazuh_indexer_13700" {
 # Wazuh Server EC2 Instance
 resource "aws_instance" "wazuh_server_13700" {
     ami           = data.aws_ami.amzn2.id  # "ami-0c1bc246476a5572b"
-    instance_type = "t3.medium"
+    instance_type = "t2.micro"
     security_groups = [ "${aws_security_group.security_group_13700.name}"]
     key_name= aws_key_pair.aws_key_server.key_name
     associate_public_ip_address = true
@@ -159,7 +159,7 @@ resource "aws_instance" "wazuh_server_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.server_key.private_key_pem
@@ -173,7 +173,7 @@ resource "aws_instance" "wazuh_server_13700" {
 # Wazuh Dashboard EC2 Instance
 resource "aws_instance" "wazuh_dashboard_13700" {
     ami           = data.aws_ami.amzn2.id  # "ami-0c1bc246476a5572b"
-    instance_type = "t3.large"
+    instance_type = "t2.micro"
     security_groups = [ "${aws_security_group.security_group_13700.name}"]
     key_name= aws_key_pair.aws_key_dashboard.key_name
     associate_public_ip_address = true
@@ -200,7 +200,7 @@ resource "aws_instance" "wazuh_dashboard_13700" {
 
         connection {
             host        = coalesce(self.public_ip, self.private_ip)
-            agent       = true
+            #agent       = true
             type        = "ssh"
             user        = "ec2-user"
             private_key = tls_private_key.dashboard_key.private_key_pem
